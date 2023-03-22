@@ -6,7 +6,6 @@
 
 
 int main(int argc, char* argv[]){
-// ----------------------------------local gpu reduce----------------------------------
   // Initialize the MPI environment
     int world_rank, world_size; // init world rank and size
     MPI_Init(&argc, &argv);

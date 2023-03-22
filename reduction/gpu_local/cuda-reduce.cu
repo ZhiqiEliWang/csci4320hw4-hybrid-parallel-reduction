@@ -121,8 +121,12 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
   }
 }
 
+extern "C"
 __global__
-void cuda_reduce(){
-  
-  reduce7<T, 1024, true><<<dimGrid, dimBlock, smemSize>>>(d_idata, d_odata, size);
+double cuda_reduce(double* input, double* output, int size) {
+  int dimBlock = 1024; // we hard code block size as 1024
+  int dimGrid = (size + dimBlock - 1) / dimBlock;
+  int smemSize = ((1024 / 32) + 1) * sizeof(double);
+  reduce7<double, 1024, true><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
+  return;
 }

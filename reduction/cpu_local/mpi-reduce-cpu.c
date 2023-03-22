@@ -5,7 +5,6 @@
 
 
 int main(int argc, char* argv[]){
-// ----------------------------------local cpu reduce----------------------------------
   // Initialize the MPI environment
     int world_rank, world_size; // init world rank and size
     MPI_Init(&argc, &argv);
@@ -25,10 +24,9 @@ int main(int argc, char* argv[]){
     }
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
-    double local_sum = 0; 
-    for (int i=0; i<arrSize; i++){
-        local_sum += bigArr[i];
-    }
+    double* local_sum;
+    cudaMallocManaged(&local_sum, sizeof(double));
+    cuda_reduce(bigArr, local_sum, arrSize);
     uint64_t local_reduction_end = clock_now();
 
 
