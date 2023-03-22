@@ -120,3 +120,9 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
     g_odata[blockIdx.x] = mySum;
   }
 }
+
+__global__
+void cuda_reduce(){
+  
+  reduce7<T, 1024, true><<<dimGrid, dimBlock, smemSize>>>(d_idata, d_odata, size);
+}
