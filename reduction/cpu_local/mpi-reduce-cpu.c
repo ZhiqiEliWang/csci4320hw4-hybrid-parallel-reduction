@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
+#include<math.h>
 #include "clockcycle.h"
+
 
 
 int main(int argc, char* argv[]){
@@ -14,19 +16,17 @@ int main(int argc, char* argv[]){
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
     // size of a array is determined by how many nodes are working on this task
-    int arrSize = (48 * 32**5) / world_size; 
+    int arrSize = (48 * pow(32,5)) / world_size; 
 
-    double* bigArr;
-    cudaMallocManaged(&bigArr, arrSize*sizeof(double));
+    int* bigArr = malloc(sizeof(double)*arrSize);
 
     for (int i=0; i<arrSize; i++){
         bigArr[i] = (double)(i + world_rank * arrSize);
     }
+
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
     double* local_sum;
-    cudaMallocManaged(&local_sum, sizeof(double));
-    cuda_reduce(bigArr, local_sum, arrSize);
     uint64_t local_reduction_end = clock_now();
 
 
@@ -48,5 +48,5 @@ int main(int argc, char* argv[]){
         
     }
 
-    cudaFree(bigArr);
+    Free(bigArr);
 }
