@@ -41,8 +41,11 @@ int main(int argc, char* argv[]){
 
     // show runtime
     if (world_rank == 0){
-        double p2p_time_in_secs = ((double)(p2p_end_cycles - p2p_start_cycles)) / 512000000;
-        printf("MPI Rank %d: Global Sum is %f in %f secs.\n", global_sum, p2p_time_in_secs);
+        double local_reduction_time = ((double)(local_reduction_end - local_reduction_start)) / 512000000;
+        double global_reduction_time = ((double)(org_end_cycles - org_start_cycles)) / 512000000;
+        printf("MPI Rank %d: Global Sum is %f in %f secs.\n", global_sum, local_reduction_time + global_reduction_time);
+        printf("MPI Rank %d: local reduction took %f secs.\n", global_sum, local_reduction_time);
+        
     }
 
     cudaFree(bigArr);
