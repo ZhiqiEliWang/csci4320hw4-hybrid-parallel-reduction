@@ -24,9 +24,15 @@ int main(int argc, char* argv[]){
         bigArr[i] = (double)(i + world_rank * arrSize);
     }
 
+
+
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
+    printf("MPI Rank %d: starts local reduction.\n", world_rank);
     double* local_sum;
+        for (int i=0; i<arrSize; i++){
+        local_sum += bigArr[i];
+    }
     uint64_t local_reduction_end = clock_now();
 
 
@@ -43,8 +49,8 @@ int main(int argc, char* argv[]){
     if (world_rank == 0){
         double local_reduction_time = ((double)(local_reduction_end - local_reduction_start)) / 512000000;
         double global_reduction_time = ((double)(org_end_cycles - org_start_cycles)) / 512000000;
-        printf("MPI Rank %d: Global Sum is %f in %f secs.\n", global_sum, local_reduction_time + global_reduction_time);
-        printf("MPI Rank %d: local reduction took %f secs.\n", global_sum, local_reduction_time);
+        printf("MPI Rank %d: Global Sum is %f in %f secs.\n", world_rank, global_sum, local_reduction_time + global_reduction_time);
+        printf("MPI Rank %d: local reduction took %f secs.\n", world_rank, global_sum, local_reduction_time);
         
     }
 
