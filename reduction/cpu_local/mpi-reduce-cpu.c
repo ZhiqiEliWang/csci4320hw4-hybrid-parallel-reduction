@@ -44,7 +44,8 @@ int main(int argc, char* argv[]){
     MPI_Barrier(MPI_COMM_WORLD);
     uint64_t org_end_cycles = clock_now();
 
-
+    MPI_Finalize();
+    
     // show runtime
     if (world_rank == 0){
         double local_reduction_time = ((double)(local_reduction_end - local_reduction_start)) / 512000000;
