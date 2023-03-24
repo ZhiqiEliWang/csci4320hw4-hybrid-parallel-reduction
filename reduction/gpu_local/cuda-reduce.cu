@@ -123,10 +123,29 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
 
 extern "C"
 __global__
-double cuda_reduce(double* input, double* output, int size) {
-  int dimBlock = 1024; // we hard code block size as 1024
+void ArrInit(double* bigArr, int arrSize, int rank){
+  cudaMallocManaged(&bigArr, sizeof(double)*arrSize);
+  for (int i=0; i<arrSize; i++){
+    bigArr[i] = (double)(i + rank * arrSize);
+  }
+}
+
+extern "C"
+bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
+
+
+extern "C"
+void cudaReduce(double* input, double* output, int size) {
+  cudaMallocManaged(&output, sizeof(double));
+  int dimBlock = 1024; // we hardcode block size as 1024
   int dimGrid = (size + dimBlock - 1) / dimBlock;
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
-  reduce7<double, 1024, true><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
+  isPow = isPow2(size);
+  reduce7<double, 1024, isPow2><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
   return;
+}
+
+extern "C"
+void freeCudaMem(double* ptr){
+  cudaFree(ptr);
 }

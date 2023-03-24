@@ -16,22 +16,16 @@ int main(int argc, char* argv[]){
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
     // size of a array is determined by how many nodes are working on this task
-    int arrSize = (48 * pow(32,5)) / world_size; 
+    int arrSize = (48 * (int)(pow(32,5))) / world_size; 
 
     double* bigArr;
-    cudaMallocManaged(&bigArr, sizeof(double)*arrSize);
+    arrInit(bigArr, arrSize, world_rank) // we init the list with value here
 
-    for (int i=0; i<arrSize; i++){
-        bigArr[i] = (double)(i + world_rank * arrSize);
-    }
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
     double* local_sum;
-    cudaMallocManaged(&local_sum, sizeof(double));
     cuda_reduce(bigArr, local_sum, arrSize);
     uint64_t local_reduction_end = clock_now();
-
-
 
     // calling MPI_Reduce
     double global_sum = 0;
@@ -43,10 +37,13 @@ int main(int argc, char* argv[]){
 
     // show runtime
     if (world_rank == 0){
-        double p2p_time_in_secs = ((double)(p2p_end_cycles - p2p_start_cycles)) / 512000000;
-        printf("MPI Rank %d: Global Sum is %f in %f secs.\n", global_sum, p2p_time_in_secs);
+        double local_reduction_time = ((double)(local_reduction_end - local_reduction_start)) / 512000000;
+        double global_reduction_time = ((double)(org_end_cycles - org_start_cycles)) / 512000000;
+        printf("MPI Rank %d: Global Sum is %f in %f secs.\n", world_rank, global_sum, local_reduction_time + global_reduction_time);
+        printf("MPI Rank %d: local reduction took %f secs.\n", world_rank, local_reduction_time); 
     }
 
-    cudaFree(bigArr);
-    cudaFree(local_sum);
+    freeCudaMem(bigArr);
+    freeCudaMem(local_sum);
+    MPI_Finalize();
 }

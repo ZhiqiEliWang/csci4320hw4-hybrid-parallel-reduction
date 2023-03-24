@@ -7,5 +7,4 @@ module load spectrum-mpi
 # taskset insures that hyperthreaded cores are skipped.
 #####################################################################################################
 # taskset -c 0-159:4 mpirun -N 32 /gpfs/u/home/SPNR/SPNRcaro/scratch/MPI-Examples/mpi-hello
-mpicc` mpi-reduce-gpu.c -o mpi-reduce-gpu`
-taskset -c 0-159:4 mpirun -N 32 /gpfs/u/home/PCPC/PCPCwnww/scratch/csci4320hw4/gpu_local/reduce-exe
+taskset -c 0-159:4 mpirun -N 32 /gpfs/u/home/PCPC/PCPCwnww/scratch/csci4320hw4-hybrid-parallel-reduction/reduction/reduce-exe
