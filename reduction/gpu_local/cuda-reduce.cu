@@ -100,8 +100,6 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
   }
 }
 
-template void reduce<double>(int size, int threads, int blocks, int whichKernel,
-  double *d_idata, double *d_odata);
 
 extern "C"
 __global__
@@ -122,6 +120,7 @@ void cudaReduce(double* input, double* output, int size) {
   int dimGrid = (size + dimBlock - 1) / dimBlock;
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
   bool isPow = isPow2(size);
+  // template <typename T, unsigned int blockSize, bool nIsPow2>__global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata, unsigned int n) {
   reduce7<double, 1024, isPow2><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
   return;
 }
