@@ -1,6 +1,20 @@
 #include <stdio.h>
 
 template <class T>
+struct SharedMemory {
+  __device__ inline operator T *() {
+    extern __shared__ int __smem[];
+    return (T *)__smem;
+  }
+
+  __device__ inline operator const T *() const {
+    extern __shared__ int __smem[];
+    return (T *)__smem;
+  }
+};
+
+
+template <class T>
 __device__ __forceinline__ T warpReduceSum(unsigned int mask, T mySum) {
   for (int offset = warpSize / 2; offset > 0; offset /= 2) {
     mySum += __shfl_down_sync(mask, mySum, offset);
@@ -86,6 +100,9 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
   }
 }
 
+template void reduce<double>(int size, int threads, int blocks, int whichKernel,
+  double *d_idata, double *d_odata);
+
 extern "C"
 __global__
 void ArrInit(double* bigArr, int arrSize, int rank){
@@ -95,7 +112,6 @@ void ArrInit(double* bigArr, int arrSize, int rank){
   }
 }
 
-extern "C"
 bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
 
 
@@ -105,7 +121,7 @@ void cudaReduce(double* input, double* output, int size) {
   int dimBlock = 1024; // we hardcode block size as 1024
   int dimGrid = (size + dimBlock - 1) / dimBlock;
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
-  isPow = isPow2(size);
+  bool isPow = isPow2(size);
   reduce7<double, 1024, isPow2><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
   return;
 }
