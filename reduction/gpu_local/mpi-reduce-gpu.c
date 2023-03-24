@@ -18,7 +18,7 @@ int main(int argc, char* argv[]){
     int arrSize = (48 * (int)(pow(32,5))) / world_size; 
 
     double* bigArr;
-    arrInit(bigArr, arrSize, world_rank) // we init the list with value here
+    arrInit(bigArr, arrSize, world_rank); // we init the list with value here
 
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
