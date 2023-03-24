@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
     // size of a array is determined by how many nodes are working on this task
-    int arrSize = (48 * pow(32,5)) / world_size; 
+    int arrSize = (48 * (int)(pow(32,5))) / world_size; 
 
     int* bigArr = malloc(sizeof(double)*arrSize);
 
@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
     printf("MPI Rank %d: starts local reduction.\n", world_rank);
-    double* local_sum;
+    double local_sum;
         for (int i=0; i<arrSize; i++){
         local_sum += bigArr[i];
     }
@@ -56,4 +56,5 @@ int main(int argc, char* argv[]){
     }
 
     free(bigArr);
+    return 0;
 }
