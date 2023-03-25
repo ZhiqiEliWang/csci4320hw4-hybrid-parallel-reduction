@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-extern "C"
+extern "C"{
 template <class T>
 struct SharedMemory {
   __device__ inline operator T *() {
@@ -13,14 +13,16 @@ struct SharedMemory {
     return (T *)__smem;
   }
 };
+}
 
-
+extern "C"{
 template <class T>
 __device__ __forceinline__ T warpReduceSum(unsigned int mask, T mySum) {
   for (int offset = warpSize / 2; offset > 0; offset /= 2) {
     mySum += __shfl_down_sync(mask, mySum, offset);
   }
   return mySum;
+}
 }
 
 #if __CUDA_ARCH__ >= 800
@@ -100,17 +102,19 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
     g_odata[blockIdx.x] = mySum;
   }
 }
-// template void reduce7<double, 1024, false>(double*, double*, unsigned int);
 
-extern "C"
+
+extern "C"{
 void ArrInit(double* bigArr, int arrSize, int rank){
   cudaMallocManaged(&bigArr, sizeof(double)*arrSize);
   for (int i=0; i<arrSize; i++){
     bigArr[i] = (double)(i + rank * arrSize);
   }
 }
+}
 
-bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
+// a helper to check power of 2
+extern "X"{bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }}
 
 
 void cudaReduce(double* input, double* output, int size) {
