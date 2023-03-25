@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+
 template <class T>
 struct SharedMemory {
   __device__ inline operator T *() {
