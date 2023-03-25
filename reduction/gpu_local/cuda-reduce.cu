@@ -113,34 +113,34 @@ void ArrInit(double* bigArr, int arrSize, int rank){
 bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
 
 
-// void cudaReduce(double* input, double* output, int size) {
-//   cudaMallocManaged(&output, sizeof(double));
-//   int dimBlock = 1024; // we hardcode block size as 1024
-//   int dimGrid = (size + dimBlock - 1) / dimBlock;
-//   int smemSize = ((1024 / 32) + 1) * sizeof(double);
-//   bool isPow = isPow2(size);
-
-//   reduce7<<<dimGrid, dimBlock, smemSize>>>(input, output, size);
-//   return;
-// }
-
-extern "C"
-void freeCudaMem(double* ptr){
-  cudaFree(ptr);
-}
-
-
-template <class T>
-void reduce(int size, T *d_idata, T *d_odata) {
-  cudaMallocManaged(&d_odata, sizeof(T));
-
-  // dim3 dimBlock(threads, 1, 1);
-  // dim3 dimGrid(blocks, 1, 1);
-
+void cudaReduce(double* input, double* output, int size) {
+  cudaMallocManaged(&output, sizeof(double));
   int dimBlock = 1024; // we hardcode block size as 1024
   int dimGrid = (size + dimBlock - 1) / dimBlock;
-  int smemSize = ((1024 / 32) + 1) * sizeof(T);
-  reduce7<T, 1024, false><<<dimGrid, dimBlock, smemSize>>>(d_idata, d_odata, size);
+  int smemSize = ((1024 / 32) + 1) * sizeof(double);
+  bool isPow = isPow2(size);
+
+  reduce7<double, 1024, false><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
+  return;
 }
 
-template void reduce<double>(int size, double *d_idata, double *d_odata);
+// extern "C"
+// void freeCudaMem(double* ptr){
+//   cudaFree(ptr);
+// }
+
+
+// template <class T>
+// void reduce(int size, T *d_idata, T *d_odata) {
+//   cudaMallocManaged(&d_odata, sizeof(T));
+
+//   // dim3 dimBlock(threads, 1, 1);
+//   // dim3 dimGrid(blocks, 1, 1);
+
+//   int dimBlock = 1024; // we hardcode block size as 1024
+//   int dimGrid = (size + dimBlock - 1) / dimBlock;
+//   int smemSize = ((1024 / 32) + 1) * sizeof(T);
+//   reduce7<T, 1024, false><<<dimGrid, dimBlock, smemSize>>>(d_idata, d_odata, size);
+// }
+
+// template void reduce<double>(int size, double *d_idata, double *d_odata);
