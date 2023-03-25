@@ -132,6 +132,7 @@ void freeCudaMem(double* ptr){
 extern "C"
 void cudaInit(int world_rank){
   int cE;
+  int cudaDeviceCount;
   if( (cE = cudaGetDeviceCount( &cudaDeviceCount)) != cudaSuccess )
   {
   printf(" Unable to determine cuda device count, error is %d, count is %d\n",
