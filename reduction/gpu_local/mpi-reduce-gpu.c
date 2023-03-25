@@ -5,9 +5,9 @@
 #include "clockcycle.h"
 
 
-extern "C" void ArrInit(double* bigArr, int arrSize, int rank);
-extern "C" void cudaReduce(double* input, double* output, int size);
-extern "C" void freeCudaMem(double* ptr);
+void ArrInit(double* bigArr, int arrSize, int rank);
+void cudaReduce(double* input, double* output, int size);
+void freeCudaMem(double* ptr);
 
 int main(int argc, char* argv[]){
   // Initialize the MPI environment
