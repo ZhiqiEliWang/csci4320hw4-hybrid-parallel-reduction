@@ -18,6 +18,20 @@ int main(int argc, char* argv[]){
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
+
+    if( (cE = cudaGetDeviceCount( &cudaDeviceCount)) != cudaSuccess )
+    {
+    printf(" Unable to determine cuda device count, error is %d, count is %d\n",
+    cE, cudaDeviceCount );
+    exit(-1);
+    }
+    if( (cE = cudaSetDevice( myrank % cudaDeviceCount )) != cudaSuccess )
+    {
+    printf(" Unable to have rank %d set to cuda device %d, error is %d \n",
+    myrank, (myrank % cudaDeviceCount), cE);
+    exit(-1);
+    }
+
     // size of a array is determined by how many nodes are working on this task
     int arrSize = (48 * (int)(pow(32,5))) / world_size; 
 
