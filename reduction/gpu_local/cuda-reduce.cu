@@ -99,7 +99,7 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
     g_odata[blockIdx.x] = mySum;
   }
 }
-template void reduce7<double>(double*, double*, unsigned int);
+template void reduce7<double, 1024, false>(double*, double*, unsigned int);
 
 extern "C"
 __global__
