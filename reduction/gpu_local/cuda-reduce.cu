@@ -113,7 +113,6 @@ void ArrInit(double* bigArr, int arrSize, int rank){
 bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
 
 
-extern "C"
 void cudaReduce(double* input, double* output, int size) {
   cudaMallocManaged(&output, sizeof(double));
   int dimBlock = 1024; // we hardcode block size as 1024
