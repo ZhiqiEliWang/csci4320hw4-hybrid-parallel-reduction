@@ -102,7 +102,6 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
 // template void reduce7<double, 1024, false>(double*, double*, unsigned int);
 
 extern "C"
-__global__
 void ArrInit(double* bigArr, int arrSize, int rank){
   cudaMallocManaged(&bigArr, sizeof(double)*arrSize);
   for (int i=0; i<arrSize; i++){
