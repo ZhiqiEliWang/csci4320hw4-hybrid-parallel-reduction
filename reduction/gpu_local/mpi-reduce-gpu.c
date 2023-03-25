@@ -3,7 +3,6 @@
 #include <mpi.h>
 #include <math.h>
 #include "clockcycle.h"
-#include "cuda-reduce.cu"
 
 
 extern "C" void ArrInit(double* bigArr, int arrSize, int rank)
