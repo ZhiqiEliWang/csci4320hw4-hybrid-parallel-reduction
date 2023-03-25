@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-    void cudaInit(world_rank);
+    cudaInit(world_rank);
 
     // size of a array is determined by how many nodes are working on this task
     int arrSize = (48 * (int)(pow(32,5))) / world_size; 
