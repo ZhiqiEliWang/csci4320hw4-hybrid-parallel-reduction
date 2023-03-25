@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-
-
 template <class T>
 struct SharedMemory {
   __device__ inline operator T *() {
@@ -126,10 +124,10 @@ void cudaReduce(double* input, double* output, int size) {
   return;
 }
 
-// extern "C"
-// void freeCudaMem(double* ptr){
-//   cudaFree(ptr);
-// }
+extern "C"
+void freeCudaMem(double* ptr){
+  cudaFree(ptr);
+}
 
 
 // template <class T>
