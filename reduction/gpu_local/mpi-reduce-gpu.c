@@ -19,16 +19,17 @@ int main(int argc, char* argv[]){
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
 
+    int cudaDeviceCount;
     if( (cE = cudaGetDeviceCount( &cudaDeviceCount)) != cudaSuccess )
     {
     printf(" Unable to determine cuda device count, error is %d, count is %d\n",
     cE, cudaDeviceCount );
     exit(-1);
     }
-    if( (cE = cudaSetDevice( myrank % cudaDeviceCount )) != cudaSuccess )
+    if( (cE = cudaSetDevice( world_rank % cudaDeviceCount )) != cudaSuccess )
     {
     printf(" Unable to have rank %d set to cuda device %d, error is %d \n",
-    myrank, (myrank % cudaDeviceCount), cE);
+    world_rank, (world_rank % cudaDeviceCount), cE);
     exit(-1);
     }
 
