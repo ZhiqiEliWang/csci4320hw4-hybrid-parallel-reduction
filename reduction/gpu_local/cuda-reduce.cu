@@ -132,12 +132,15 @@ void freeCudaMem(double* ptr){
 
 template <class T>
 void reduce(int size, T *d_idata, T *d_odata) {
-  cudaMallocManaged(&output, sizeof(T));
+  cudaMallocManaged(&d_odata, sizeof(T));
+
+  // dim3 dimBlock(threads, 1, 1);
+  // dim3 dimGrid(blocks, 1, 1);
+
   int dimBlock = 1024; // we hardcode block size as 1024
   int dimGrid = (size + dimBlock - 1) / dimBlock;
   int smemSize = ((1024 / 32) + 1) * sizeof(T);
-  bool isPow = isPow2(size);
-  reduce7<T, 1024, isPow><<<dimGrid, dimBlock, smemSize>>>(d_idata, d_odata, size);
+  reduce7<T, 1024, false><<<dimGrid, dimBlock, smemSize>>>(d_idata, d_odata, size);
 }
 
 template void reduce<double>(int size, double *d_idata, double *d_odata);
