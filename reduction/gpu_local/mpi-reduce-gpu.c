@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
-#include<math.h>
+#include <math.h>
 #include "clockcycle.h"
+#include "cuda-reduce.cu"
 
 
 int main(int argc, char* argv[]){
