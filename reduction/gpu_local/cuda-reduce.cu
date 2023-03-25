@@ -101,7 +101,7 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
 
 
 extern "C"
-void ArrInit(double* bigArr, int arrSize, int rank){
+void arrInit(double* bigArr, int arrSize, int rank){
   cudaMallocManaged(&bigArr, sizeof(double)*arrSize);
   for (int i=0; i<arrSize; i++){
     bigArr[i] = (double)(i + rank * arrSize);
@@ -129,18 +129,3 @@ void freeCudaMem(double* ptr){
   cudaFree(ptr);
 }
 
-
-// template <class T>
-// void reduce(int size, T *d_idata, T *d_odata) {
-//   cudaMallocManaged(&d_odata, sizeof(T));
-
-//   // dim3 dimBlock(threads, 1, 1);
-//   // dim3 dimGrid(blocks, 1, 1);
-
-//   int dimBlock = 1024; // we hardcode block size as 1024
-//   int dimGrid = (size + dimBlock - 1) / dimBlock;
-//   int smemSize = ((1024 / 32) + 1) * sizeof(T);
-//   reduce7<T, 1024, false><<<dimGrid, dimBlock, smemSize>>>(d_idata, d_odata, size);
-// }
-
-// template void reduce<double>(int size, double *d_idata, double *d_odata);

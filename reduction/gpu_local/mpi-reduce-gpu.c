@@ -5,7 +5,7 @@
 #include "clockcycle.h"
 
 
-void ArrInit(double* bigArr, int arrSize, int rank);
+void arrInit(double* bigArr, int arrSize, int rank);
 void cudaReduce(double* input, double* output, int size);
 void freeCudaMem(double* ptr);
 
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]){
     // LOCAL SUM
     double* local_sum;
     // cuda_reduce(bigArr, local_sum, arrSize);
-    reduce(arrSize, bigArr, local_sum);
+    cudaReduce(arrSize, bigArr, local_sum);
     uint64_t local_reduction_end = clock_now();
 
     // calling MPI_Reduce
