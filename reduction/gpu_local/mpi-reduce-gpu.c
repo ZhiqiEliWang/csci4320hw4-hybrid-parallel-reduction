@@ -19,7 +19,8 @@ int main(int argc, char* argv[]){
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
 
-    int cudaDeviceCount;
+    int cudaDeviceCount;  
+    cudaError_t cE;
     if( (cE = cudaGetDeviceCount( &cudaDeviceCount)) != cudaSuccess )
     {
     printf(" Unable to determine cuda device count, error is %d, count is %d\n",
