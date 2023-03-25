@@ -129,3 +129,20 @@ void freeCudaMem(double* ptr){
   cudaFree(ptr);
 }
 
+extern "C"
+void cudaInit(int world_rank){
+  int cE;
+  if( (cE = cudaGetDeviceCount( &cudaDeviceCount)) != cudaSuccess )
+  {
+  printf(" Unable to determine cuda device count, error is %d, count is %d\n",
+  cE, cudaDeviceCount );
+  exit(-1);
+  }
+  if( (cE = cudaSetDevice( world_rank % cudaDeviceCount )) != cudaSuccess )
+  {
+  printf(" Unable to have rank %d set to cuda device %d, error is %d \n",
+  world_rank, (world_rank % cudaDeviceCount), cE);
+  exit(-1);
+  }
+}
+

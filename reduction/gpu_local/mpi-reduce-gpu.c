@@ -8,6 +8,7 @@
 void arrInit(double* bigArr, int arrSize, int rank);
 void cudaReduce(double* input, double* output, int size);
 void freeCudaMem(double* ptr);
+void cudaInit();
 
 int main(int argc, char* argv[]){
   // Initialize the MPI environment
@@ -18,21 +19,7 @@ int main(int argc, char* argv[]){
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-
-    int cudaDeviceCount;  
-    cudaError_t cE;
-    if( (cE = cudaGetDeviceCount( &cudaDeviceCount)) != cudaSuccess )
-    {
-    printf(" Unable to determine cuda device count, error is %d, count is %d\n",
-    cE, cudaDeviceCount );
-    exit(-1);
-    }
-    if( (cE = cudaSetDevice( world_rank % cudaDeviceCount )) != cudaSuccess )
-    {
-    printf(" Unable to have rank %d set to cuda device %d, error is %d \n",
-    world_rank, (world_rank % cudaDeviceCount), cE);
-    exit(-1);
-    }
+    void cudaInit(world_rank);
 
     // size of a array is determined by how many nodes are working on this task
     int arrSize = (48 * (int)(pow(32,5))) / world_size; 
