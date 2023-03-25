@@ -100,6 +100,7 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
   }
 }
 
+template void reduce7<double, 1024, bool>(double*, double*, unsigned int);
 
 extern "C"
 __global__
