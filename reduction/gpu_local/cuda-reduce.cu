@@ -99,7 +99,7 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
     g_odata[blockIdx.x] = mySum;
   }
 }
-
+template void reduce7<double>(double*, double*, unsigned int);
 
 extern "C"
 __global__
@@ -120,7 +120,6 @@ void cudaReduce(double* input, double* output, int size) {
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
   bool isPow = isPow2(size);
 
-  template void reduce7<double>(double*, double*, unsigned int);
   // template <typename T, unsigned int blockSize, bool nIsPow2>__global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata, unsigned int n) {
   reduce7<<<dimGrid, dimBlock, smemSize>>>(input, output, size);
   return;
