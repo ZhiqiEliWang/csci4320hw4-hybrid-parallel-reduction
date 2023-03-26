@@ -31,7 +31,7 @@ int main(int argc, char* argv[]){
     // LOCAL SUM
     double* local_sum;
     // cuda_reduce(bigArr, local_sum, arrSize);
-    cudaReduce(arrSize, bigArr, local_sum);
+    cudaReduce(bigArr, local_sum, arrSize);
     uint64_t local_reduction_end = clock_now();
 
     // calling MPI_Reduce
