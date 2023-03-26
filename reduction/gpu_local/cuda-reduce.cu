@@ -115,12 +115,12 @@ extern "C" bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
 extern "C"
 void cudaReduce(double* input, double* output, int size) {
   cudaMallocManaged(&output, sizeof(double));
-  int dimBlock = 1024; // we hardcode block size as 1024
-  int dimGrid = (size + dimBlock - 1) / dimBlock;
+  int block_size = 1024; // we hardcode block size as 1024
+  int num_block= (size + block_size - 1) / block_size;
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
   bool isPow = isPow2(size);
-  printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", dimBlock, size);
-  reduce7<double, 1024, false><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
+  printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, size);
+  reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, output, size);
   return;
 }
 
