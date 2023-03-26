@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
     double* local_sum;
-    // cuda_reduce(bigArr, local_sum, arrSize);
+    printf("Rank %d: reduction started\n", world_rank);
     cudaReduce(bigArr, local_sum, arrSize);
     uint64_t local_reduction_end = clock_now();
 

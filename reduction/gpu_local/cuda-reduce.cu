@@ -119,7 +119,7 @@ void cudaReduce(double* input, double* output, int size) {
   int dimGrid = (size + dimBlock - 1) / dimBlock;
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
   bool isPow = isPow2(size);
-  printf("Rank %d: reduction started");
+  printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", dimBlock, size);
   reduce7<double, 1024, false><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
   return;
 }
@@ -144,6 +144,7 @@ void cudaInit(int world_rank){
   printf(" Unable to have rank %d set to cuda device %d, error is %d \n",
   world_rank, (world_rank % cudaDeviceCount), cE);
   exit(-1);
+  printf("MPI Rank %d, completed CUDA init\n", world_rank);
   }
 }
 
