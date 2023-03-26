@@ -122,7 +122,7 @@ void cudaReduce(double* input, double* output, int size) {
   printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, size);
   reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, output, size);
   cudaDeviceSynchronize();
-  printf("CUDA Reduce finished: local sum is %f", &output);
+  printf("CUDA Reduce finished: local sum is %f\n", &output);
   return;
 }
 
