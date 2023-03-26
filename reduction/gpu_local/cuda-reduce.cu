@@ -119,7 +119,7 @@ void cudaReduce(double* input, double* output, int size) {
   int dimGrid = (size + dimBlock - 1) / dimBlock;
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
   bool isPow = isPow2(size);
-
+  printf("Rank %d: reduction started");
   reduce7<double, 1024, false><<<dimGrid, dimBlock, smemSize>>>(input, output, size);
   return;
 }
