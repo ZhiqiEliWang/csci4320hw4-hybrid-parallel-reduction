@@ -26,6 +26,8 @@ int main(int argc, char* argv[]){
 
     double* bigArr;
     arrInit(bigArr, arrSize, world_rank); // we init the list with value here
+    MPI_Barrier(MPI_COMM_WORLD);
+
 
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
