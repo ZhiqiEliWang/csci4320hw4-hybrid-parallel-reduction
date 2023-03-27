@@ -128,7 +128,7 @@ int cudaReduce(int arrSize, int rank) {
   reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, out_data, arrSize);
   cudaDeviceSynchronize();
 
-  printf("input data: %f/n", input[0]);
+  printf("Rank %d: input data: %f\n", rank, input[0]);
 
   // reduce the output of cuda reduce
   for (int i=0; i<num_block; i++){

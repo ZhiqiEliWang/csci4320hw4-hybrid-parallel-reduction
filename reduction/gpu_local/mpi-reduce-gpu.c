@@ -6,6 +6,7 @@
 
 
 int cudaReduce(int arrSize, int rank);
+void cudaInit(int world_rank);
 
 int main(int argc, char* argv[]){
   // Initialize the MPI environment
@@ -15,6 +16,8 @@ int main(int argc, char* argv[]){
     // Find out rank, size
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+    cudaInit(world_rank);
 
 
     // size of a array is determined by how many nodes are working on this task
