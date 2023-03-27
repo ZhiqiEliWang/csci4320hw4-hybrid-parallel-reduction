@@ -133,7 +133,7 @@ double cudaReduce(int arrSize, int rank) {
     output += out_data[i];
   }
   
-  printf("CUDA Reduce finished: local sum is %f\n", output);
+  //printf("CUDA Reduce finished: local sum is %f\n", output);
   cudaFree(input);
   cudaFree(out_data);
   return output;
