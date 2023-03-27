@@ -107,7 +107,7 @@ int cudaReduce(int arrSize, int rank) {
 
   // ARR INIT 
   double* input;
-  double output;
+  double output = 0.0;
   cudaMallocManaged(&input, sizeof(double)*arrSize);
   for (int i=0; i<arrSize; i++){
     input[i] = (double)(i + rank * arrSize);
@@ -124,11 +124,11 @@ int cudaReduce(int arrSize, int rank) {
   double* out_data;
   cudaMallocManaged(&out_data, sizeof(double)*num_block);
 
-  printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, size);
+  printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, arrSize);
   reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, out_data, size);
   cudaDeviceSynchronize();
 
-  printf("input data: %f/n", input[0])
+  printf("input data: %f/n", input[0]);
 
   // reduce the output of cuda reduce
   for (int i=0; i<num_block; i++){
