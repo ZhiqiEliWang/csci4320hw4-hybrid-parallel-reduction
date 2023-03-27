@@ -130,7 +130,7 @@ void cudaReduce(double* input, double* output, int size) {
 
   // reduce the output of cuda reduce
   for (int i=0; i<num_block; i++){
-    output += out_data[i];
+    output* += out_data[i];
   }
   
   printf("CUDA Reduce finished: local sum is %f\n", &output);
