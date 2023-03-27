@@ -37,6 +37,7 @@ int main(int argc, char* argv[]){
     MPI_Barrier(MPI_COMM_WORLD);
     uint64_t org_end_cycles = clock_now();
 
+    MPI_Finalize();
 
     // show runtime
     if (world_rank == 0){
@@ -45,6 +46,5 @@ int main(int argc, char* argv[]){
         printf("MPI Rank %d: Global Sum is %f in %f secs.\n", world_rank, global_sum, local_reduction_time + global_reduction_time);
         printf("MPI Rank %d: local reduction took %f secs.\n", world_rank, local_reduction_time); 
     }
-
-    MPI_Finalize();
+  return 0;
 }

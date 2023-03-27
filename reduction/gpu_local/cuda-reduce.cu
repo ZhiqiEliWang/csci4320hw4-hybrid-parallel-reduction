@@ -103,7 +103,7 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
 extern "C" bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
 
 extern "C"
-int cudaReduce(int arrSize, int rank) {
+double cudaReduce(int arrSize, int rank) {
 
   // ARR INIT 
   double* input;
