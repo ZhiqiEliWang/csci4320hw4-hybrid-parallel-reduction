@@ -32,6 +32,7 @@ int main(int argc, char* argv[]){
     // calling MPI_Reduce
     double global_sum = 0;
     uint64_t org_start_cycles = clock_now();
+    MPI_Barrier(MPI_COMM_WORLD);
     MPI_Reduce(&local_sum, &global_sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
     uint64_t org_end_cycles = clock_now();
