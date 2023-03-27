@@ -5,7 +5,7 @@
 #include "clockcycle.h"
 
 
-int cudaReduce(int arrSize, int rank);
+double cudaReduce(int arrSize, int rank);
 void cudaInit(int world_rank);
 
 int main(int argc, char* argv[]){
