@@ -1,0 +1,177 @@
++ module load spectrum-mpi
+++ /usr/share/lmod/lmod/libexec/lmod bash load spectrum-mpi
++ eval 'CCI_SMPI_SET_TS=2021082400;' export 'CCI_SMPI_SET_TS;' 'CUDA_HOME=/usr/local/cuda-11.0;' export 'CUDA_HOME;' 'CUDA_PATH=/usr/local/cuda-11.0;' export 'CUDA_PATH;' 'LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64:/opt/ibm/spectrum_mpi/profilesupport/lib:/opt/ibm/spectrum_mpi/lib:/opt/mellanox/sharp/lib:/opt/mellanox/hcoll/lib;' export 'LD_LIBRARY_PATH;' 'LMOD_FAMILY_MPI=spectrum-mpi;' export 'LMOD_FAMILY_MPI;' 'LMOD_FAMILY_MPI_VERSION=10.4;' export 'LMOD_FAMILY_MPI_VERSION;' 'LOADEDMODULES=xl_r/16.1.1:spectrum-mpi/10.4:cuda/11.0;' export 'LOADEDMODULES;' 'MANPATH=/opt/ibm/spectrum_mpi/share/man;' export 'MANPATH;' 'MODULEPATH=/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.0:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:/gpfs/u/software/dcs-rhel8/modulefiles;' export 'MODULEPATH;' 'MPI_ROOT=/opt/ibm/spectrum_mpi;' export 'MPI_ROOT;' 'OPAL_LIBDIR=/opt/ibm/spectrum_mpi/lib;' export 'OPAL_LIBDIR;' 'PAMI_ENABLE_STRIPING=0;' export 'PAMI_ENABLE_STRIPING;' 'PAMI_IBV_ADAPTER_AFFINITY=1;' export 'PAMI_IBV_ADAPTER_AFFINITY;' 'PAMI_IBV_ENABLE_OOO_AR=1;' export 'PAMI_IBV_ENABLE_OOO_AR;' 'PATH=/usr/local/cuda-11.0/bin:/opt/ibm/spectrum_mpi/bin:/opt/ibm/xlf/16.1.1/bin:/opt/ibm/xlC/16.1.1/bin:/usr/lpp/mmfs/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/gpfs/u/home/PCPC/PCPCwnww/.local/bin:/gpfs/u/home/PCPC/PCPCwnww/bin;' export 'PATH;' '_LMFILES_=/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.0.lua;' export '_LMFILES_;' '_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09InhsX3IiLFsibXBpIl09InNwZWN0cnVtLW1waSIsfSxtVD17Y3VkYT17WyJmbiJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvY3VkYS8xMS4wLmx1YSIsWyJmdWxsTmFtZSJdPSJjdWRhLzExLjAiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17c3RhdGU9e1sidGVzdGluZyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImN1ZGEiLH0sWyJzcGVjdHJ1bS1tcGkiXT17WyJm;' export '_ModuleTable001_;' '_ModuleTable002_=biJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy9zcGVjdHJ1bS1tcGkvMTAuNC5sdWEiLFsiZnVsbE5hbWUiXT0ic3BlY3RydW0tbXBpLzEwLjQiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17c3RhdGU9e1sidGVzdGluZyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InNwZWN0cnVtLW1waSIsfSx4bF9yPXtbImZuIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL3hsX3IvMTYuMS4xLmx1YSIsWyJmdWxsTmFtZSJdPSJ4bF9yLzE2LjEuMSIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1l;' export '_ModuleTable002_;' '_ModuleTable003_=Il09InhsX3IiLH0sfSxtcGF0aEE9eyIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy9kY3MtcmhlbDgvbW9kdWxlZmlsZXMvLnNwZWN0cnVtLW1waS8xMC40Ly5jdWRhLzExLjAiLCIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQiLCIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8ueGxfci8xNi4xLjEiLCIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcyIsfQ==;' export '_ModuleTable003_;' '_ModuleTable_Sz_=3;' export '_ModuleTable_Sz_;'
+++ CCI_SMPI_SET_TS=2021082400
+++ export CCI_SMPI_SET_TS
+++ CUDA_HOME=/usr/local/cuda-11.0
+++ export CUDA_HOME
+++ CUDA_PATH=/usr/local/cuda-11.0
+++ export CUDA_PATH
+++ LD_LIBRARY_PATH=/usr/local/cuda-11.0/lib64:/opt/ibm/spectrum_mpi/profilesupport/lib:/opt/ibm/spectrum_mpi/lib:/opt/mellanox/sharp/lib:/opt/mellanox/hcoll/lib
+++ export LD_LIBRARY_PATH
+++ LMOD_FAMILY_MPI=spectrum-mpi
+++ export LMOD_FAMILY_MPI
+++ LMOD_FAMILY_MPI_VERSION=10.4
+++ export LMOD_FAMILY_MPI_VERSION
+++ LOADEDMODULES=xl_r/16.1.1:spectrum-mpi/10.4:cuda/11.0
+++ export LOADEDMODULES
+++ MANPATH=/opt/ibm/spectrum_mpi/share/man
+++ export MANPATH
+++ MODULEPATH=/gpfs/u/software/dcs-rhel8/modulefiles/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/.cuda/11.0:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4:/gpfs/u/software/dcs-rhel8/modulefiles/.xl_r/16.1.1:/gpfs/u/software/dcs-rhel8/modulefiles
+++ export MODULEPATH
+++ MPI_ROOT=/opt/ibm/spectrum_mpi
+++ export MPI_ROOT
+++ OPAL_LIBDIR=/opt/ibm/spectrum_mpi/lib
+++ export OPAL_LIBDIR
+++ PAMI_ENABLE_STRIPING=0
+++ export PAMI_ENABLE_STRIPING
+++ PAMI_IBV_ADAPTER_AFFINITY=1
+++ export PAMI_IBV_ADAPTER_AFFINITY
+++ PAMI_IBV_ENABLE_OOO_AR=1
+++ export PAMI_IBV_ENABLE_OOO_AR
+++ PATH=/usr/local/cuda-11.0/bin:/opt/ibm/spectrum_mpi/bin:/opt/ibm/xlf/16.1.1/bin:/opt/ibm/xlC/16.1.1/bin:/usr/lpp/mmfs/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/gpfs/u/home/PCPC/PCPCwnww/.local/bin:/gpfs/u/home/PCPC/PCPCwnww/bin
+++ export PATH
+++ _LMFILES_=/gpfs/u/software/dcs-rhel8/modulefiles/xl_r/16.1.1.lua:/gpfs/u/software/dcs-rhel8/modulefiles/spectrum-mpi/10.4.lua:/gpfs/u/software/dcs-rhel8/modulefiles/.spectrum-mpi/10.4/cuda/11.0.lua
+++ export _LMFILES_
+++ _ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09InhsX3IiLFsibXBpIl09InNwZWN0cnVtLW1waSIsfSxtVD17Y3VkYT17WyJmbiJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQvY3VkYS8xMS4wLmx1YSIsWyJmdWxsTmFtZSJdPSJjdWRhLzExLjAiLFsibG9hZE9yZGVyIl09Myxwcm9wVD17c3RhdGU9e1sidGVzdGluZyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09ImN1ZGEiLH0sWyJzcGVjdHJ1bS1tcGkiXT17WyJm
+++ export _ModuleTable001_
+++ _ModuleTable002_=biJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy9zcGVjdHJ1bS1tcGkvMTAuNC5sdWEiLFsiZnVsbE5hbWUiXT0ic3BlY3RydW0tbXBpLzEwLjQiLFsibG9hZE9yZGVyIl09Mixwcm9wVD17c3RhdGU9e1sidGVzdGluZyJdPTEsfSx9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InNwZWN0cnVtLW1waSIsfSx4bF9yPXtbImZuIl09Ii9ncGZzL3Uvc29mdHdhcmUvZGNzLXJoZWw4L21vZHVsZWZpbGVzL3hsX3IvMTYuMS4xLmx1YSIsWyJmdWxsTmFtZSJdPSJ4bF9yLzE2LjEuMSIsWyJsb2FkT3JkZXIiXT0xLHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1l
+++ export _ModuleTable002_
+++ _ModuleTable003_=Il09InhsX3IiLH0sfSxtcGF0aEE9eyIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy9kY3MtcmhlbDgvbW9kdWxlZmlsZXMvLnNwZWN0cnVtLW1waS8xMC40Ly5jdWRhLzExLjAiLCIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8uc3BlY3RydW0tbXBpLzEwLjQiLCIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcy8ueGxfci8xNi4xLjEiLCIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcyIsfSxbInN5c3RlbUJhc2VNUEFUSCJdPSIvZ3Bmcy91L3NvZnR3YXJlL2Rjcy1yaGVsOC9tb2R1bGVmaWxlcyIsfQ==
+++ export _ModuleTable003_
+++ _ModuleTable_Sz_=3
+++ export _ModuleTable_Sz_
+++ : -s sh
++ eval
++ mpicc mpi-reduce-cpu.c -o mpi-reduce-cpu
++ taskset -c 0-159:4 mpirun -N 32 /gpfs/u/home/PCPC/PCPCwnww/scratch/csci4320hw4-hybrid-parallel-reduction/reduction/cpu_local/mpi-reduce-cpu
+MPI Rank 67: starts local reduction.
+MPI Rank 115: starts local reduction.
+MPI Rank 82: starts local reduction.
+MPI Rank 97: starts local reduction.
+MPI Rank 45: starts local reduction.
+MPI Rank 59: starts local reduction.
+MPI Rank 32: starts local reduction.
+MPI Rank 72: starts local reduction.
+MPI Rank 6: starts local reduction.
+MPI Rank 20: starts local reduction.
+MPI Rank 107: starts local reduction.
+MPI Rank 64: starts local reduction.
+MPI Rank 23: starts local reduction.
+MPI Rank 121: starts local reduction.
+MPI Rank 43: starts local reduction.
+MPI Rank 96: starts local reduction.
+MPI Rank 49: starts local reduction.
+MPI Rank 103: starts local reduction.
+MPI Rank 95: starts local reduction.
+MPI Rank 38: starts local reduction.
+MPI Rank 65: starts local reduction.
+MPI Rank 53: starts local reduction.
+MPI Rank 122: starts local reduction.
+MPI Rank 112: starts local reduction.
+MPI Rank 13: starts local reduction.
+MPI Rank 42: starts local reduction.
+MPI Rank 57: starts local reduction.
+MPI Rank 40: starts local reduction.
+MPI Rank 92: starts local reduction.
+MPI Rank 98: starts local reduction.
+MPI Rank 2: starts local reduction.
+MPI Rank 48: starts local reduction.
+MPI Rank 124: starts local reduction.
+MPI Rank 56: starts local reduction.
+MPI Rank 90: starts local reduction.
+MPI Rank 46: starts local reduction.
+MPI Rank 29: starts local reduction.
+MPI Rank 105: starts local reduction.
+MPI Rank 7: starts local reduction.
+MPI Rank 21: starts local reduction.
+MPI Rank 66: starts local reduction.
+MPI Rank 73: starts local reduction.
+MPI Rank 33: starts local reduction.
+MPI Rank 26: starts local reduction.
+MPI Rank 61: starts local reduction.
+MPI Rank 123: starts local reduction.
+MPI Rank 126: starts local reduction.
+MPI Rank 102: starts local reduction.
+MPI Rank 91: starts local reduction.
+MPI Rank 85: starts local reduction.
+MPI Rank 119: starts local reduction.
+MPI Rank 117: starts local reduction.
+MPI Rank 37: starts local reduction.
+MPI Rank 79: starts local reduction.
+MPI Rank 41: starts local reduction.
+MPI Rank 75: starts local reduction.
+MPI Rank 10: starts local reduction.
+MPI Rank 25: starts local reduction.
+MPI Rank 70: starts local reduction.
+MPI Rank 80: starts local reduction.
+MPI Rank 127: starts local reduction.
+MPI Rank 104: starts local reduction.
+MPI Rank 31: starts local reduction.
+MPI Rank 22: starts local reduction.
+MPI Rank 101: starts local reduction.
+MPI Rank 88: starts local reduction.
+MPI Rank 78: starts local reduction.
+MPI Rank 55: starts local reduction.
+MPI Rank 51: starts local reduction.
+MPI Rank 19: starts local reduction.
+MPI Rank 3: starts local reduction.
+MPI Rank 39: starts local reduction.
+MPI Rank 47: starts local reduction.
+MPI Rank 24: starts local reduction.
+MPI Rank 89: starts local reduction.
+MPI Rank 4: starts local reduction.
+MPI Rank 99: starts local reduction.
+MPI Rank 86: starts local reduction.
+MPI Rank 69: starts local reduction.
+MPI Rank 44: starts local reduction.
+MPI Rank 12: starts local reduction.
+MPI Rank 63: starts local reduction.
+MPI Rank 35: starts local reduction.
+MPI Rank 34: starts local reduction.
+MPI Rank 52: starts local reduction.
+MPI Rank 108: starts local reduction.
+MPI Rank 100: starts local reduction.
+MPI Rank 9: starts local reduction.
+MPI Rank 15: starts local reduction.
+MPI Rank 114: starts local reduction.
+MPI Rank 106: starts local reduction.
+MPI Rank 77: starts local reduction.
+MPI Rank 71: starts local reduction.
+MPI Rank 110: starts local reduction.
+MPI Rank 120: starts local reduction.
+MPI Rank 109: starts local reduction.
+MPI Rank 125: starts local reduction.
+MPI Rank 8: starts local reduction.
+MPI Rank 14: starts local reduction.
+MPI Rank 18: starts local reduction.
+MPI Rank 30: starts local reduction.
+MPI Rank 5: starts local reduction.
+MPI Rank 94: starts local reduction.
+MPI Rank 0: starts local reduction.
+MPI Rank 54: starts local reduction.
+MPI Rank 1: starts local reduction.
+MPI Rank 17: starts local reduction.
+MPI Rank 111: starts local reduction.
+MPI Rank 76: starts local reduction.
+MPI Rank 36: starts local reduction.
+MPI Rank 87: starts local reduction.
+MPI Rank 113: starts local reduction.
+MPI Rank 116: starts local reduction.
+MPI Rank 118: starts local reduction.
+MPI Rank 58: starts local reduction.
+MPI Rank 62: starts local reduction.
+MPI Rank 68: starts local reduction.
+MPI Rank 16: starts local reduction.
+MPI Rank 28: starts local reduction.
+MPI Rank 93: starts local reduction.
+MPI Rank 83: starts local reduction.
+MPI Rank 81: starts local reduction.
+MPI Rank 50: starts local reduction.
+MPI Rank 60: starts local reduction.
+MPI Rank 74: starts local reduction.
+MPI Rank 84: starts local reduction.
+MPI Rank 27: starts local reduction.
+MPI Rank 11: starts local reduction.
+MPI Rank 0: Global Sum is 1297036691720728832.000000 in 0.143306 secs.
+MPI Rank 0: local reduction took 0.093295 secs.
