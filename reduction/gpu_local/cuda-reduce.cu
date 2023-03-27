@@ -112,7 +112,7 @@ double cudaReduce(int arrSize, int rank) {
   for (int i=0; i<arrSize; i++){
     input[i] = (double)(i + rank * arrSize);
   }
-  printf("Rank %d: arrInit finished\n", rank);
+  // printf("Rank %d: arrInit finished\n", rank);
 
   //CUDA REDUCE
   int block_size = 1024; // we hardcode block size as 1024
@@ -124,11 +124,9 @@ double cudaReduce(int arrSize, int rank) {
   double* out_data;
   cudaMallocManaged(&out_data, sizeof(double)*num_block);
 
-  printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, arrSize);
+  // printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, arrSize);
   reduce7<double, 1024, true><<<num_block, block_size, smemSize>>>(input, out_data, arrSize);
   cudaDeviceSynchronize();
-
-  printf("Rank %d: input data: %f\n", rank, input[0]);
 
   // reduce the output of cuda reduce
   for (int i=0; i<num_block; i++){
@@ -157,7 +155,7 @@ void cudaInit(int world_rank){
   printf(" Unable to have rank %d set to cuda device %d, error is %d \n",
   world_rank, (world_rank % cudaDeviceCount), cE);
   exit(-1);
-  printf("MPI Rank %d, completed CUDA init\n", world_rank);
+  // printf("MPI Rank %d, completed CUDA init\n", world_rank);
   }
 }
 
