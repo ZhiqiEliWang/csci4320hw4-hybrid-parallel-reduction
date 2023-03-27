@@ -119,10 +119,21 @@ void cudaReduce(double* input, double* output, int size) {
   int num_block= (size + block_size - 1) / block_size;
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
   bool isPow = isPow2(size);
+
+  // init space for cuda reduce's output
+  out_data = cudaMallocManaged(sizeof(double)*1024);
+
   printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, size);
-  reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, output, size);
+  reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, out_data, size);
   cudaDeviceSynchronize();
+
+  // reduce the output of cuda reduce
+  for (int i=0; i<num_block; i++){
+    output += out_data[i];
+  }
+  
   printf("CUDA Reduce finished: local sum is %f\n", &output);
+  cudaFree(out_data)
   return;
 }
 
