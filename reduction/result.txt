@@ -9,3 +9,15 @@ GPU runtime without O3 flag:
 12gpu   1.8033s
 24gpu   1.1289s
 48gpu   0.8062s
+
+CPU runtime with O3 flag:
+32ranks  0.4813s
+64ranks  0.2984s
+128ranks 0.1247s
+256ranks 0.0865s
+
+CPU runtime without O3 flag:
+32ranks  0.4848s
+64ranks  0.3266s
+128ranks 0.0143s
+256ranks 0.0671s
