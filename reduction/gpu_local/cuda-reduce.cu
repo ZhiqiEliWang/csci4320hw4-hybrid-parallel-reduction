@@ -125,7 +125,7 @@ int cudaReduce(int arrSize, int rank) {
   cudaMallocManaged(&out_data, sizeof(double)*num_block);
 
   printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, arrSize);
-  reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, out_data, size);
+  reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, out_data, arrSize);
   cudaDeviceSynchronize();
 
   printf("input data: %f/n", input[0]);
