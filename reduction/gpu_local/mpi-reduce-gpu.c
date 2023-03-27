@@ -5,7 +5,7 @@
 #include "clockcycle.h"
 
 
-int cudaReduce(int arrSize, int rank)
+int cudaReduce(int arrSize, int rank);
 
 int main(int argc, char* argv[]){
   // Initialize the MPI environment
@@ -22,9 +22,9 @@ int main(int argc, char* argv[]){
 
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
-    double* local_sum;
+    double local_sum;
     printf("Rank %d: reduction started\n", world_rank);
-    cudaReduce(bigArr, local_sum, arrSize, world_rank);
+    local_sum = cudaReduce(arrSize, world_rank);
     uint64_t local_reduction_end = clock_now();
 
     // calling MPI_Reduce
