@@ -106,6 +106,7 @@ void arrInit(double* bigArr, int arrSize, int rank){
   for (int i=0; i<arrSize; i++){
     bigArr[i] = (double)(i + rank * arrSize);
   }
+  print("Rank %d: arrInit finished\n");
 }
 
 
