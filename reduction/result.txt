@@ -1,0 +1,4 @@
+GPU runtime with O3 flag:
+6gpu    1.2927s
+12gpu   0.8923s
+
