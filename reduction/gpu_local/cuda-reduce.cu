@@ -99,48 +99,35 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
   }
 }
 
-
-extern "C"
-void arrInit(double* bigArr, int arrSize, int rank){
-  // cudaMallocManaged(&bigArr, sizeof(double)*arrSize);
-  // for (int i=0; i<arrSize; i++){
-  //   bigArr[i] = (double)(i + rank * arrSize);
-  // }
-  // printf("Rank %d: arrInit finished\n", rank);
-}
-
-
 // a helper to check power of 2
 extern "C" bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
 
 extern "C"
-void cudaReduce(double* input, double* output, int size, int rank, int arrSize) {
+int cudaReduce(int arrSize, int rank) {
 
+  // ARR INIT 
+  double* input;
   cudaMallocManaged(&input, sizeof(double)*arrSize);
   for (int i=0; i<arrSize; i++){
     input[i] = (double)(i + rank * arrSize);
   }
   printf("Rank %d: arrInit finished\n", rank);
 
-
-  cudaMallocManaged(&output, sizeof(double));
+  //CUDA REDUCE
   int block_size = 1024; // we hardcode block size as 1024
-  int num_block= (size + block_size - 1) / block_size;
+  int num_block= (arrSize + block_size - 1) / block_size;
   int smemSize = ((1024 / 32) + 1) * sizeof(double);
-  bool isPow = isPow2(size);
+  bool isPow = isPow2(arrSize);
 
   // init space for cuda reduce's output
   double* out_data;
   cudaMallocManaged(&out_data, sizeof(double)*num_block);
 
-  for(int i=0; i<20; i++){
-    printf("input[%d] = %f", i, input[i]);
-  }
-  printf("\n");
-
   printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, size);
   reduce7<double, 1024, false><<<block_size, num_block, smemSize>>>(input, out_data, size);
   cudaDeviceSynchronize();
+
+  printf("input data: %f/n", input[0])
 
   // reduce the output of cuda reduce
   for (int i=0; i<num_block; i++){
@@ -148,14 +135,11 @@ void cudaReduce(double* input, double* output, int size, int rank, int arrSize) 
   }
   
   printf("CUDA Reduce finished: local sum is %f\n", &output);
+  cudaFree(input);
   cudaFree(out_data);
   return;
 }
 
-extern "C"
-void freeCudaMem(double* ptr){
-  cudaFree(ptr);
-}
 
 extern "C"
 void cudaInit(int world_rank){

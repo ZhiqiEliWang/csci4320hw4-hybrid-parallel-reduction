@@ -5,10 +5,7 @@
 #include "clockcycle.h"
 
 
-void arrInit(double* bigArr, int arrSize, int rank);
-void cudaReduce(double* input, double* output, int size, int rank, int arrSize);
-void freeCudaMem(double* ptr);
-void cudaInit();
+int cudaReduce(int arrSize, int rank)
 
 int main(int argc, char* argv[]){
   // Initialize the MPI environment
@@ -19,21 +16,15 @@ int main(int argc, char* argv[]){
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-    cudaInit(world_rank);
 
     // size of a array is determined by how many nodes are working on this task
     int arrSize = (48 * (int)(pow(32,5))) / world_size; 
-
-    double* bigArr;
-    arrInit(bigArr, arrSize, world_rank); // we init the list with value here
-    MPI_Barrier(MPI_COMM_WORLD);
-
 
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
     double* local_sum;
     printf("Rank %d: reduction started\n", world_rank);
-    cudaReduce(bigArr, local_sum, arrSize, world_rank, arrSize);
+    cudaReduce(bigArr, local_sum, arrSize, world_rank);
     uint64_t local_reduction_end = clock_now();
 
     // calling MPI_Reduce
@@ -52,7 +43,5 @@ int main(int argc, char* argv[]){
         printf("MPI Rank %d: local reduction took %f secs.\n", world_rank, local_reduction_time); 
     }
 
-    freeCudaMem(bigArr);
-    freeCudaMem(local_sum);
     MPI_Finalize();
 }
