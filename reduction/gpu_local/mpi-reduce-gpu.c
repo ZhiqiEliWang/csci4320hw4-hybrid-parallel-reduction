@@ -6,7 +6,7 @@
 
 
 void arrInit(double* bigArr, int arrSize, int rank);
-void cudaReduce(double* input, double* output, int size, int rank);
+void cudaReduce(double* input, double* output, int size, int rank, int arrSize);
 void freeCudaMem(double* ptr);
 void cudaInit();
 
@@ -33,7 +33,7 @@ int main(int argc, char* argv[]){
     // LOCAL SUM
     double* local_sum;
     printf("Rank %d: reduction started\n", world_rank);
-    cudaReduce(bigArr, local_sum, arrSize, world_rank);
+    cudaReduce(bigArr, local_sum, arrSize, world_rank, arrSize);
     uint64_t local_reduction_end = clock_now();
 
     // calling MPI_Reduce

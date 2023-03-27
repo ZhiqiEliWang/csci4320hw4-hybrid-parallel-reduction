@@ -114,7 +114,7 @@ void arrInit(double* bigArr, int arrSize, int rank){
 extern "C" bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
 
 extern "C"
-void cudaReduce(double* input, double* output, int size, int rank) {
+void cudaReduce(double* input, double* output, int size, int rank, int arrSize) {
 
   cudaMallocManaged(&input, sizeof(double)*arrSize);
   for (int i=0; i<arrSize; i++){
