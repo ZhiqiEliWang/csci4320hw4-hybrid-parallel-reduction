@@ -19,7 +19,6 @@ int main(int argc, char* argv[]){
 
     cudaInit(world_rank);
 
-
     // size of a array is determined by how many nodes are working on this task
     int arrSize = (48 * (int)(pow(32,5))) / world_size; 
 
