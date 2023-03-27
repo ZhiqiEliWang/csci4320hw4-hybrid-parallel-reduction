@@ -124,7 +124,9 @@ void cudaReduce(double* input, double* output, int size) {
   double* out_data;
   cudaMallocManaged(&out_data, sizeof(double)*num_block);
 
-  for(int i=0; i<20, i++){printf("input[%d] = %f", i, input[i]);}
+  for(int i=0; i<20; i++){
+    printf("input[%d] = %f", i, input[i]);
+  }
   printf("\n");
 
   printf("CUDA Reduce starting ...threads 1024, blocks %d, size %d\n", num_block, size);
