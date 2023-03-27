@@ -33,7 +33,7 @@ int main(int argc, char* argv[]){
     // LOCAL SUM
     double* local_sum;
     printf("Rank %d: reduction started\n", world_rank);
-    cudaReduce(bigArr, local_sum, arrSize);
+    cudaReduce(bigArr, local_sum, arrSize, world_rank);
     uint64_t local_reduction_end = clock_now();
 
     // calling MPI_Reduce

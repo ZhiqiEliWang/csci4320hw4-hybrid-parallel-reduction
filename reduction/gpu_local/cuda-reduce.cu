@@ -102,18 +102,11 @@ __global__ void reduce7(const T *__restrict__ g_idata, T *__restrict__ g_odata,
 
 extern "C"
 void arrInit(double* bigArr, int arrSize, int rank){
-  cudaMallocManaged(&bigArr, sizeof(double)*arrSize);
-  for (int i=0; i<arrSize; i++){
-    bigArr[i] = (double)(i + rank * arrSize);
-  }
-  
-  for (int i=0; i<20; i++){
-    printf("bigArr[%d] = %f", i, bigArr[i]);
-  }
-  printf("\n");
-
-
-  printf("Rank %d: arrInit finished\n", rank);
+  // cudaMallocManaged(&bigArr, sizeof(double)*arrSize);
+  // for (int i=0; i<arrSize; i++){
+  //   bigArr[i] = (double)(i + rank * arrSize);
+  // }
+  // printf("Rank %d: arrInit finished\n", rank);
 }
 
 
@@ -121,7 +114,15 @@ void arrInit(double* bigArr, int arrSize, int rank){
 extern "C" bool isPow2(unsigned int x) { return ((x & (x - 1)) == 0); }
 
 extern "C"
-void cudaReduce(double* input, double* output, int size) {
+void cudaReduce(double* input, double* output, int size, int rank) {
+
+  cudaMallocManaged(&input, sizeof(double)*arrSize);
+  for (int i=0; i<arrSize; i++){
+    input[i] = (double)(i + rank * arrSize);
+  }
+  printf("Rank %d: arrInit finished\n", rank);
+
+
   cudaMallocManaged(&output, sizeof(double));
   int block_size = 1024; // we hardcode block size as 1024
   int num_block= (size + block_size - 1) / block_size;
