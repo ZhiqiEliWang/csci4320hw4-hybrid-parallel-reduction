@@ -24,9 +24,8 @@ int main(int argc, char* argv[]){
 
     uint64_t local_reduction_start = clock_now();
     // LOCAL SUM
-    double local_sum;
     printf("Rank %d: reduction started\n", world_rank);
-    local_sum = cudaReduce(arrSize, world_rank);
+    double local_sum = cudaReduce(arrSize, world_rank);
     uint64_t local_reduction_end = clock_now();
 
     // calling MPI_Reduce
@@ -37,8 +36,6 @@ int main(int argc, char* argv[]){
     MPI_Barrier(MPI_COMM_WORLD);
     uint64_t org_end_cycles = clock_now();
 
-    MPI_Finalize();
-
     // show runtime
     if (world_rank == 0){
         double local_reduction_time = ((double)(local_reduction_end - local_reduction_start)) / 512000000;
@@ -46,5 +43,6 @@ int main(int argc, char* argv[]){
         printf("MPI Rank %d: Global Sum is %f in %f secs.\n", world_rank, global_sum, local_reduction_time + global_reduction_time);
         printf("MPI Rank %d: local reduction took %f secs.\n", world_rank, local_reduction_time); 
     }
+  MPI_Finalize();
   return 0;
 }
