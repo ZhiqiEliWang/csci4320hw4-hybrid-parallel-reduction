@@ -106,6 +106,13 @@ void arrInit(double* bigArr, int arrSize, int rank){
   for (int i=0; i<arrSize; i++){
     bigArr[i] = (double)(i + rank * arrSize);
   }
+  
+  for (int i=0; i<20; i++){
+    printf("bigArr[%d] = %f", i, bigArr[i]);
+  }
+  printf("\n");
+
+
   printf("Rank %d: arrInit finished\n", rank);
 }
 
