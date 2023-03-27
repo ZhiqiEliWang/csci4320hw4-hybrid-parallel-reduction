@@ -6,7 +6,7 @@
 
 
 void arrInit(double* bigArr, int arrSize, int rank);
-void cudaReduce(double* input, double* output, int size);
+void cudaReduce(double* input, double* output, int size, int rank);
 void freeCudaMem(double* ptr);
 void cudaInit();
 
