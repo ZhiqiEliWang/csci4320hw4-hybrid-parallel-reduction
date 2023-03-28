@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.3.3)  27 MAR 2023 17:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2023.3.3)  28 MAR 2023 15:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -416,16 +416,16 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 21.
+(Font)              <7> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 21.
+(Font)              <5> on input line 17.
 <gpu_local.png, id=4, 515.9275pt x 279.0425pt>
 File: gpu_local.png Graphic file (type png)
 <use gpu_local.png>
-Package pdftex.def Info: gpu_local.png  used on input line 36.
+Package pdftex.def Info: gpu_local.png  used on input line 42.
 (pdftex.def)             Requested size: 345.0pt x 186.59984pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 36--37
+Overfull \hbox (15.0pt too wide) in paragraph at lines 42--43
 [][] 
  []
 
@@ -435,10 +435,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <cpu_local.png, id=6, 450.68375pt x 279.0425pt>
 File: cpu_local.png Graphic file (type png)
 <use cpu_local.png>
-Package pdftex.def Info: cpu_local.png  used on input line 56.
+Package pdftex.def Info: cpu_local.png  used on input line 62.
 (pdftex.def)             Requested size: 345.0pt x 213.62009pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 56--57
+Overfull \hbox (15.0pt too wide) in paragraph at lines 62--63
 [][] 
  []
 
@@ -454,7 +454,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  99i,8n,103p,861b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk></Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (3 pages, 139726 bytes).
+Output written on report.pdf (3 pages, 142872 bytes).
 PDF statistics:
  66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

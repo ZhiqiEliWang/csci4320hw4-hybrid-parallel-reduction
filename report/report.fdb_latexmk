@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1679954126 "/Users/eliwang2332/Documents/GitHub/csci4320hw4-hybrid-parallel-reduction/report/report.tex" "report.pdf" "report" 1679954126 0
-  "/Users/eliwang2332/Documents/GitHub/csci4320hw4-hybrid-parallel-reduction/report/report.tex" 1679954125 4256 0d4663fbdf58b1e1a85f5e04282f6960 ""
+["pdflatex"] 1680032085 "/Users/eliwang2332/Documents/GitHub/csci4320hw4-hybrid-parallel-reduction/report/report.tex" "report.pdf" "report" 1680032086 0
+  "/Users/eliwang2332/Documents/GitHub/csci4320hw4-hybrid-parallel-reduction/report/report.tex" 1680032084 4710 544c9762085ae6d145a1d3d679fc0215 ""
   "/Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/data/fonts/map/pdftex/pdftex.map" 1679952313 170686 bbb557a3e7289c02ff2240d99167da11 ""
   "/Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1679952933 11548 262ad5b84ff651169c543a3b21e2f9c5 ""
   "/Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1677853163 23187009 179c72fca4dd44ffae3dec0205482476 ""
@@ -160,8 +160,8 @@
   "/Users/eliwang2332/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty" 1666275769 56148 51a9a8571c07b9921892ae11063ae853 ""
   "cpu_local.png" 1679951813 17400 2d0a69150a11f8ac6ea27fab8497579d ""
   "gpu_local.png" 1679951797 16067 37e6aa269ed70bc8b2cbecd35a0719ce ""
-  "report.aux" 1679954126 310 212ade71d69e3abf82a2add13ccd9fad "pdflatex"
-  "report.tex" 1679954125 4256 0d4663fbdf58b1e1a85f5e04282f6960 ""
+  "report.aux" 1680032086 310 212ade71d69e3abf82a2add13ccd9fad "pdflatex"
+  "report.tex" 1680032084 4710 544c9762085ae6d145a1d3d679fc0215 ""
   (generated)
   "report.aux"
   "report.log"

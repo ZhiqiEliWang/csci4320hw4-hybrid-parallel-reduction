@@ -14,6 +14,12 @@
 \date{\today}
 \maketitle
 
+\underline{How to run my code: }
+
+My code for gpu local reduction + cpu global reduction are \texttt{cuda-reduce.cu}, \texttt{gpu-local.sh}, \texttt{mpi-reduce-gpu.c}, and \texttt{Makefile}. You can compile my file by \texttt{make}, and then submit my \texttt{gpu-local.sh} to slurm.
+
+And my code for cpu local reduction is \texttt{cpu-local.sh}, \texttt{mpi-reduce-cpu.c}, you can just compile with mpixlc and submit my \texttt{cpu-local.sh} to slurm.
+
 Here are the result from the experiments with local GPU reduction and global CPU reduction:
 
 \begin{table}[h!]
